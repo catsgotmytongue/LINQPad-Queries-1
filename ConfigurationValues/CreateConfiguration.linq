@@ -1,11 +1,4 @@
-<Query Kind="Statements">
-  <Connection>
-    <ID>a33ccdf6-b147-48fb-84e0-2ce107b3ffbd</ID>
-    <Persist>true</Persist>
-    <Driver>AstoriaAuto</Driver>
-    <Server>https://cenvapprd38.oya.ad/CoreDataService/CoreDataService.svc/</Server>
-  </Connection>
-</Query>
+<Query Kind="Statements" />
 
 var maxConfig = ConfigurationValues
 	.OrderByDescending(cv => cv.ConfigurationValueId)

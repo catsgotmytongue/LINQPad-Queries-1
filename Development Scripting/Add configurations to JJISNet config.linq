@@ -37,7 +37,3 @@ foreach (var tuple in configs)
 SaveChanges();
 
 ConfigurationValues.OrderByDescending(cv => cv.ConfigurationValueId).Dump();
-
-
-//DeleteObject(ConfigurationValues.Where(cv => cv.ConfigurationValueId == 0).Take(1).ToList().First());
-//SaveChanges();
