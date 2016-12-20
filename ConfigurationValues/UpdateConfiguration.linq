@@ -1,9 +1,11 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>a33ccdf6-b147-48fb-84e0-2ce107b3ffbd</ID>
-    <Persist>true</Persist>
-    <Driver>AstoriaAuto</Driver>
-    <Server>https://cenvapprd38.oya.ad/CoreDataService/CoreDataService.svc/</Server>
+    <ID>a3839723-1f14-4b0a-8d14-93952fb67c4f</ID>
+    <Driver Assembly="OData4DynamicDriver" PublicKeyToken="b0226d64cf8bfba4">OData4.OData4DynamicDriver</Driver>
+    <DriverData>
+      <Uri>https://services-dev.jjis.oya.ad/CoreDataService/Odata</Uri>
+      <AuthenticationType>1</AuthenticationType>
+    </DriverData>
   </Connection>
 </Query>
 

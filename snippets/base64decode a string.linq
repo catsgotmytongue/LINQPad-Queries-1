@@ -1,5 +1,9 @@
-<Query Kind="Expression">
+<Query Kind="Statements">
+  <NuGetReference>Microsoft.Owin</NuGetReference>
+  <NuGetReference>Microsoft.Owin.Security</NuGetReference>
   <NuGetReference>State.OR.Oya.Core.Utility</NuGetReference>
+  <Namespace>Microsoft.Owin</Namespace>
+  <Namespace>Microsoft.Owin.Security.DataHandler.Encoder</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.Caching</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.Diagnostics</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.IO</Namespace>
@@ -11,4 +15,6 @@
   <Namespace>State.OR.Oya.Core.Utility.Xml</Namespace>
 </Query>
 
-"0.1.6137.24377".GetTimeOfBuild().Dump()
+var a = System.Text.Encoding.Default.GetString(Microsoft.Owin.Security.DataHandler.Encoder.TextEncodings.Base64Url.Decode("ZDBlNGI1NGYyODg3NGM3OTRiZmVjMjAzNDZmNzMxMDk"));
+a.Dump();
+a.Length.Dump();

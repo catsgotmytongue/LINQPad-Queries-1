@@ -1,10 +1,9 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>836967e7-c6a0-40c1-ab6d-15d75f502367</ID>
-    <Persist>true</Persist>
+    <ID>fa581a87-8c8a-4533-8811-093473d27ab8</ID>
     <Driver Assembly="OData4DynamicDriver" PublicKeyToken="b0226d64cf8bfba4">OData4.OData4DynamicDriver</Driver>
     <DriverData>
-      <Uri>https://cenvapprd38.oya.ad/CoreDataService/odata</Uri>
+      <Uri>https://services-dev.jjis.oya.ad/CoreDataService/odata</Uri>
       <AuthenticationType>1</AuthenticationType>
     </DriverData>
   </Connection>

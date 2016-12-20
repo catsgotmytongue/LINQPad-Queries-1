@@ -1,4 +1,4 @@
-<Query Kind="Expression">
+<Query Kind="Program">
   <NuGetReference>State.OR.Oya.Core.Utility</NuGetReference>
   <Namespace>State.OR.Oya.Core.Utility.Caching</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.Diagnostics</Namespace>
@@ -11,4 +11,10 @@
   <Namespace>State.OR.Oya.Core.Utility.Xml</Namespace>
 </Query>
 
-"0.1.6137.24377".GetTimeOfBuild().Dump()
+void Main()
+{
+	var str = "A(B(C(D)fkgjg))";
+	var t = str.FindMatchingParenIndex(3).Dump();
+	str.Substring(3, t-3).Dump();
+	"A(B(C(D)))".FindMatchingParenIndex(5).Dump();
+}

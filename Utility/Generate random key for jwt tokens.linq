@@ -6,6 +6,19 @@
 static int[] ValidKeyLengths = new int[] {32, 48,64};
 static int keyLength = 32;
 
+void Main()
+{
+	var base64Length = keyLength;
+	var randomKeys = GetRandomKeyArray(10, base64Length);
+	String.Join(String.Format("\n\n", base64Length), randomKeys.Select(k => String.Format("{0} -- {1}", k, CheckValidKey(k)))).Dump();
+
+
+	//DecodeKey("OTgxYTBhMzI5MGQzZjNkYTkxNWQ3ZjVmMjBhM2MyYTRkNGE4NmQzYjMxYzgyOA==").Length.Dump();
+	//DecodeKey("U1hoeVFXcEViMkV5Um5GRmJFODNTV2h5VTNKVlNrVk1hRlZqYTJWUVJWQldjR0Zs").Length.Dump();
+
+}
+
+
 string GetRandomKey(int base64Length, int keyLength)
 {
 	//var keyLength = (int)Math.Ceiling((base64Length-3)*((double)3/4));
@@ -46,16 +59,6 @@ bool CheckValidKey(string key) {
 	return ValidKeyLengths.Contains(keyLength);	
 }
 
-void Main()
-{
-	var base64Length = keyLength;
-	var randomKeys = GetRandomKeyArray(10, base64Length);
-	String.Join(String.Format("\n\n", base64Length), randomKeys.Select(k=>String.Format("{0} -- {1}",k, CheckValidKey(k) ))).Dump();
-	
-	
-	//DecodeKey("OTgxYTBhMzI5MGQzZjNkYTkxNWQ3ZjVmMjBhM2MyYTRkNGE4NmQzYjMxYzgyOA==").Length.Dump();
-	//DecodeKey("U1hoeVFXcEViMkV5Um5GRmJFODNTV2h5VTNKVlNrVk1hRlZqYTJWUVJWQldjR0Zs").Length.Dump();
-	
-}
+
 
 // Define other methods and classes here
