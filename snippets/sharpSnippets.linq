@@ -1,4 +1,9 @@
-<Query Kind="Program" />
+<Query Kind="Program">
+  <Reference>&lt;RuntimeDirectory&gt;\System.Net.Http.dll</Reference>
+  <Namespace>System.Net.Http.Headers</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
+  <Namespace>System.Net.Http</Namespace>
+</Query>
 
 void Main()
 {
@@ -79,14 +84,4 @@ public static IOrderedEnumerable<T> ReverseOrder<T>(this IEnumerable<T> source) 
 	});
 
 	return sourceReversed.OrderBy(o => objOrder[o]);
-}
-
-public static void CreatePluginKernel()
-{
-	// bind all the plugin classes
-	var kernel = new StandardKernel();
-	kernel.Bind(scanner => scanner.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
-							   .SelectAllClasses()
-							   .InheritedFrom<IPlugin>()
-						   .BindToAllInterfaces());
 }
