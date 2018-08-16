@@ -1,7 +1,6 @@
 <Query Kind="Program">
   <Reference>&lt;RuntimeDirectory&gt;\System.Net.Http.dll</Reference>
   <NuGetReference>Newtonsoft.Json</NuGetReference>
-  <NuGetReference>State.OR.Oya.Core.Utility</NuGetReference>
   <Namespace>Newtonsoft.Json</Namespace>
   <Namespace>Newtonsoft.Json.Bson</Namespace>
   <Namespace>Newtonsoft.Json.Converters</Namespace>
@@ -18,8 +17,8 @@
   <Namespace>State.OR.Oya.Core.Utility.Threading</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.Xml</Namespace>
   <Namespace>System.Net.Http</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
   <Namespace>System.Net.Http.Headers</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
 </Query>
 
 void Main()

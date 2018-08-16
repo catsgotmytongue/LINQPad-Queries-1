@@ -1,5 +1,4 @@
 <Query Kind="Program">
-  <NuGetReference>State.OR.Oya.Core.Utility</NuGetReference>
   <Namespace>State.OR.Oya.Core.Utility.Caching</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.Diagnostics</Namespace>
   <Namespace>State.OR.Oya.Core.Utility.IO</Namespace>

@@ -24,32 +24,67 @@
 
 void Main()
 {
-	var fileBaseName = "Oct2016";
+	var fileBaseName = "Mar2017";
 	var exc = new ExcelQueryFactory($@"c:\temp\{fileBaseName}.xlsx");
 
-	var worksheetEntries = exc.Worksheet<Entry>($"Sheet1");
-	
-	var worksheetEntriesGrouped = worksheetEntries.ToList().GroupBy(c=>c.Date).OrderBy(c => c.Key.Date);
-	worksheetEntriesGrouped.Dump();
+	var worksheetEntries = exc.Worksheet<Entry>(fileBaseName);
 
-	var balances = new List<object>();
-	var amountsPerDate = new List<object>();
+	var worksheetEntriesGrouped = worksheetEntries.ToList().GroupBy(c => c.Date).OrderBy(c => c.Key.Date);
+	//worksheetEntriesGrouped.Dump();
+
+	var balances = new List<DateBalance>();
+	var amountsPerDate = new Dictionary<int, DatedEntry>();
 	foreach (var group in worksheetEntriesGrouped)
-	{		
-		var key = group.Key.Date.ToString("d");
+	{
+		var key = group.Key.Date;
 		var orderedByBalance = group.OrderBy(g => g.TransactionOrder);
 
-		var entries = "=" + String.Join("+", orderedByBalance.Where(d => d.Category == "Random"||d.Category == "Misc").Select(c => -1 * c.Amount));
-		var bills = "" + String.Join($"; ", orderedByBalance.Where(d => d.Category != "Random" && d.Category != "Misc").GroupBy(c => c.Category, k => k.Amount).Select(c => $"{c.Key} = {String.Join("+",c.Select(c2=>c2*-1))}"));
+		var entries = "=" + String.Join("+", orderedByBalance.Where(d => d.Category == "Random").Select(c => -1 * c.Amount));
+		var bills = "" + String.Join($"; ", orderedByBalance.Where(d => d.Category != "Random").GroupBy(c => c.Category, k => k.Amount).Select(c => $"{c.Key} = {String.Join("+", c.Select(c2 => c2 * -1))}"));
 
 
-		key.Dump();
-		balances.Add(new { Date = key, Balance = orderedByBalance.Last().Balance });
-		amountsPerDate.Add(new { Date = key, Random = entries, Bills = bills});
+		//key.Dump();
+		balances.Add(new DateBalance{ Date = key, Balance = orderedByBalance.Last().Balance });
+		amountsPerDate.Add(key.Day, new DatedEntry { Date = key, Random = entries, Bills = bills, EndBalance = orderedByBalance.Last().Balance });
 	}
+
+	balances.Select(b=>b.Balance).Dump("Balances");
+	double prevBalance = 0;
+	Enumerable.Range(1, 31)
+	.Select(day =>
+	{
+		prevBalance = amountsPerDate.ContainsKey(day)? amountsPerDate[day].EndBalance : prevBalance;
+		
+	return amountsPerDate.ContainsKey(day)
+	? new DayEntry { Day = day, Random = amountsPerDate[day].Random, Bills = amountsPerDate[day].Bills, EndBalance = amountsPerDate[day].EndBalance }
+	: new DayEntry { Day = day, Random = "", Bills = "", EndBalance = prevBalance };
+
+	})
+	.Dump();
 	
-	balances.Dump();
-	amountsPerDate.Dump();
+	//amountsPerDate.Dump();
+}
+
+public class DateBalance
+{
+	public DateTime Date { get; set; }
+	public double Balance { get; set;}
+}
+
+public class DatedEntry
+{
+	public DateTime Date { get; set; }
+	public Object Random { get; set; }
+	public Object Bills { get; set; }
+
+	public double EndBalance { get; set; }
+}
+public class DayEntry
+{
+	public int Day { get; set; }
+	public Object Random { get; set; }
+	public Object Bills { get; set; }
+	public double EndBalance { get; set; }
 }
 
 // Define other methods and classes here

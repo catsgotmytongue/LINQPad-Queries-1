@@ -13,7 +13,7 @@ void Main()
 //ProjectCollection.GlobalProjectCollection.UnloadAllProjects();
     //var propertiesGlobal = ;
 	
-	var p = new Project(@"C:\dev\TFS\Core\Trunk\Core.Utility\Core.Utility.csproj", new Dictionary<string,string>() { 
+	var p = new Project(@"C:\.csproj", new Dictionary<string,string>() { 
 		{"Configuration","Release"} 
 	},"12.0");
 	

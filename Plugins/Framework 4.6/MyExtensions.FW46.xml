@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyExtensions.FW46</name>
+    </assembly>
+    <members>
+        <member name="M:MyExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks to see if the collection is empty
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <returns>True if <paramref name="source" /></returns>
+        </member>
+        <member name="M:MyExtensions.None``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Checks to see if the collection does not have any objects matching the condition 
+            in the <paramref name="predicate"/>
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyExtensions.RemoveAllWhitespace(System.String)">
+            <summary>
+            Remove all instances of whitespace in a string and return the resulting string
+            Removes all spaces,tabs, newlines, and other whitespace chars from a string
+            sometimes useful for comparing strings that don't need to be human 
+            readable to have the same meaning.
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Disposable.Using``2(System.Func{``0},System.Func{``0,``1})">
+            <summary>
+            Sample usage: Disposable.Using(() => System.IO.File.Open(), file=>file.Rea
+            </summary>
+            <typeparam name="TDisposable"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="factory"></param>
+            <param name="fn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FunctionalExtensions.Tee``1(``0,System.Action{``0})">
+            <summary>
+            Perform an <paramref name="action"/> on <paramref name="@this"/> and return <paramref name="@this"/> instance
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="this"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FunctionalExtensions.Map``2(``0,System.Func{``0,``1})">
+            <summary>
+            Map from <paramref name="@this"/> to the resulting object returned by <paramref name="fn"/>
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="this"></param>
+            <param name="fn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FunctionalExtensions.When``1(``0,System.Func{System.Boolean},System.Func{``0,``0})">
+            <summary>
+            When the predicate is true return the result of <paramref name="fn"/>(@this) otherwise return <paramref name="@this"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="this"></param>
+            <param name="predicate"></param>
+            <param name="fn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FunctionalExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Perform an <paramref name="action"/> on each element in <paramref name="source"/>. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FunctionalExtensions.ExceptOne``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Returns everything in <paramref name="source"/> without <paramref name="obj"/>
+            Wraps the Ienumerable version of Except with a single exception
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NaturalOrderComparer.Compare(System.String,System.String)">
+            <summary>
+            Compare two strings in an alphanumeric ordering scheme
+            </summary>
+            <param name="str1"></param>
+            <param name="str2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NaturalOrderComparer.GetNextToken(System.String,System.Int32@)">
+            <summary>
+            advance the index, while retrieving the next token
+            </summary>
+            <param name="str"></param>
+            <param name="startIndex"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
